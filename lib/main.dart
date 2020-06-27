@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Route Map',
       theme: lightTheme,
       home: LoginRegisterScreen(),
-      initialRoute: LoginRegisterScreen.id,
+      initialRoute: RegisterScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         LoginRegisterScreen.id: (context) => LoginRegisterScreen(),
