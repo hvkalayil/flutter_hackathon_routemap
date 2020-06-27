@@ -23,6 +23,7 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
           child: Column(
             children: [
               //TODO: Add Banner
+              // Find Illustrations https://undraw.co/illustrations
 
               //TODO: Add Login Button
 

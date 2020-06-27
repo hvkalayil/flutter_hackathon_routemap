@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  static String id = 'LoginScreen ID';
+class RegisterScreen extends StatefulWidget {
+  static String id = '_RegisterScreen ID';
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     //Colors for gradient from Theme and height
@@ -22,13 +22,15 @@ class _LoginScreenState extends State<LoginScreen> {
               BoxDecoration(gradient: RadialGradient(colors: [light, dark])),
           child: Column(
             children: [
-              //TODO: Add mail id
+              //TODO: Add Profile Image
 
-              //TODO: Add Password
+              //TODO: Add mail id (required)
+
+              //TODO: Add Password(required)
 
               //TODO: Add Sign up Button
 
-              //TODO: Add SIGN UP WITH GOOGLE
+              //TODO: TRY Add SIGN UP WITH GOOGLE
             ],
           ),
         ),

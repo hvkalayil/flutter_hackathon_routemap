@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               //TODO: Add Login Button
 
-              //TODO: Add LOG IN WITH GOOGLE
+              //TODO: TRY Add LOG IN WITH GOOGLE
             ],
           ),
         ),

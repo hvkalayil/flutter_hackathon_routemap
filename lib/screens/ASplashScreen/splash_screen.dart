@@ -6,6 +6,7 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
+//TODO: Redirect users to LoginRegister or HomeScreen
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
