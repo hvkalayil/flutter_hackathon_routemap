@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -62,6 +63,7 @@ class _NewTripState extends State<NewTrip> {
     return Scaffold(
         body: Stack(
       children: [
+        //ACTUAL MAP
         Container(
           alignment: Alignment.topCenter,
           child: GoogleMap(
@@ -72,23 +74,160 @@ class _NewTripState extends State<NewTrip> {
             ),
           ),
         ),
+
+        //GPS BUTTON
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+          alignment: Alignment.topRight,
+          child: RaisedButton(
+            onPressed: () => _getCurrentLocation(),
+            padding: EdgeInsets.all(20),
+            color: primaryColor,
+            shape: CircleBorder(),
+            child: Icon(
+              Icons.gps_fixed,
+              color: secondaryColor,
+            ),
+          ),
+        ),
+
+        //BOTTOM UI
         Positioned(
           bottom: 0,
           child: Container(
-            padding: EdgeInsets.all(20),
-            height: deviceHeight / 4,
+            height: deviceHeight * 0.45,
             width: deviceWidth,
-            decoration: BoxDecoration(
-                color: secondaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(20))),
+            color: primaryColor,
             child: Column(
               children: [
-                RaisedButton(
-                  onPressed: () => _getCurrentLocation(),
-                  padding: EdgeInsets.all(20),
-                  color: primaryColor,
-                  shape: CircleBorder(),
-                  child: Icon(Icons.gps_fixed),
+                //Date And Trip Details
+                Container(
+                  padding: EdgeInsets.all(10),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                    ),
+                    color: secondaryColor,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            '27th June',
+                            style: TextStyle(
+                                fontSize: 24,
+                                color: primaryColor,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          Text('Trip Name',
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  color: primaryColor,
+                                  fontWeight: FontWeight.w700)),
+                        ],
+                      ),
+                      Text('10km'),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+
+                //Interactions
+                //Heading
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    'Your Interactions',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: secondaryColor,
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+
+                //CARDS
+                Container(
+                  padding: EdgeInsets.all(5),
+                  height: deviceHeight * 0.15,
+                  width: deviceWidth,
+                  decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Container(
+                        height: deviceHeight * 0.15,
+                        width: deviceWidth * 0.4,
+                        child: Card(
+                          color: secondaryColor,
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Center(child: Text('Interaction #1')),
+                        ),
+                      ),
+                      Container(
+                        height: deviceHeight * 0.15,
+                        width: deviceWidth * 0.4,
+                        child: Card(
+                          color: secondaryColor,
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Center(child: Text('Interaction #2')),
+                        ),
+                      ),
+                      Container(
+                        height: deviceHeight * 0.15,
+                        width: deviceWidth * 0.4,
+                        child: Card(
+                          color: secondaryColor,
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Center(child: Text('Interaction #3')),
+                        ),
+                      ),
+                      Container(
+                        height: deviceHeight * 0.15,
+                        width: deviceWidth * 0.4,
+                        child: Card(
+                          color: secondaryColor,
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Center(child: Text('Interaction #4')),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+
+                //Add Button
+                Container(
+                  alignment: Alignment.center,
+                  child: RaisedButton(
+                      onPressed: () {},
+                      padding: EdgeInsets.all(20),
+                      color: secondaryColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(40))),
+                      child: Text(
+                        'Add Interaction',
+                        style: TextStyle(color: primaryColor),
+                      )),
                 )
               ],
             ),
