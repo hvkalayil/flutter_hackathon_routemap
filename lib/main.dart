@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Route Map',
       theme: lightTheme,
-      home: HomeScreen(),
-      initialRoute: HomeScreen.id,
+      home: RegisterScreen(),
+      initialRoute: RegisterScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
         LoginRegisterScreen.id: (context) => LoginRegisterScreen(),
