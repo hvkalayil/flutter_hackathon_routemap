@@ -1,3 +1,4 @@
+import 'package:RouteMap/screens/GNewTrip/new_trip.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -155,9 +156,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.white,
                             ),
                             SizedBox(width: 10),
-                            Text(
-                              'Start New Trip',
-                              style: Theme.of(context).textTheme.headline4,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, NewTrip.id);
+                              },
+                              child: Text(
+                                'Start New Trip',
+                                style: Theme.of(context).textTheme.headline4,
+                              ),
                             )
                           ],
                         ),
