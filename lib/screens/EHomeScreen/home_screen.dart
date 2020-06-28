@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double deviceHeight = MediaQuery.of(context).size.height;
     final light = Theme.of(context).primaryColorLight;
     final dark = Theme.of(context).primaryColorDark;
+    final accent = Theme.of(context).accentColor;
     return Scaffold(
       backgroundColor: light,
       body: SafeArea(
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                           margin: EdgeInsets.only(bottom: 10),
                           decoration: BoxDecoration(
-                              color: Theme.of(context).accentColor,
+                              color: accent,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20),
                                   topRight: Radius.circular(20))),
@@ -134,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(20),
                                   bottomRight: Radius.circular(20))),
-                          color: Theme.of(context).accentColor,
+                          color: accent,
                           onPressed: () {},
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Container(
                           margin: EdgeInsets.only(bottom: 10),
                           decoration: BoxDecoration(
-                              color: Theme.of(context).accentColor,
+                              color: accent,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20),
                                   topRight: Radius.circular(20))),
