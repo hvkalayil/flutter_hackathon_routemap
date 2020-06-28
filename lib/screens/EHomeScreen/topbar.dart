@@ -8,6 +8,7 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).primaryColor;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 20),
       child: Row(
@@ -22,6 +23,7 @@ class TopBar extends StatelessWidget {
             child: Icon(
               FontAwesomeIcons.bars,
               size: 15,
+              color: primaryColor,
             ),
           ),
 
@@ -42,7 +44,7 @@ class TopBar extends StatelessWidget {
               child: Icon(
                 FontAwesomeIcons.user,
                 size: 15,
-                color: Theme.of(context).accentColor,
+                color: primaryColor,
               ),
             ),
           ),
