@@ -1,5 +1,6 @@
 import 'package:RouteMap/screens/CLoginScreen/login_screen.dart';
 import 'package:RouteMap/screens/DRegisterScreen/register_screen.dart';
+import 'package:RouteMap/screens/EHomeScreen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'Theme/theme.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         LoginRegisterScreen.id: (context) => LoginRegisterScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         RegisterScreen.id: (context) => RegisterScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
       },
     );
   }
