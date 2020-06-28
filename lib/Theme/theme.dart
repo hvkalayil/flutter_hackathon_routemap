@@ -21,5 +21,9 @@ final ThemeData lightTheme = ThemeData(
       fontSize: 18,
       color: Colors.white,
     ),
+    headline5: TextStyle(
+      fontSize: 22,
+      color: Colors.white,
+    ),
   ),
 );

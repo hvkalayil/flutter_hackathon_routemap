@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'drawer_menu.dart';
 import 'topbar.dart';
 
 final backgroundColor = Color(0xff00c389);
@@ -27,13 +28,17 @@ class _HomeScreenState extends State<HomeScreen> {
     //Colors and height
     double deviceHeight = MediaQuery.of(context).size.height;
     final accent = Theme.of(context).accentColor;
+    final secondaryColor = Theme.of(context).secondaryHeaderColor;
     return Scaffold(
       backgroundColor: backgroundColor,
+      drawer: BuildDrawer(),
       body: SafeArea(
         child: Column(
           children: [
             //Top Bar
-            TopBar(),
+            TopBar(
+              userName: 'hoseakalayil@gmail.com',
+            ),
 
             ListView(
               shrinkWrap: true,
