@@ -4,7 +4,7 @@ final ThemeData lightTheme = ThemeData(
   primaryColor: Color(0xff89C9B8),
   primaryColorLight: Color(0xffB1E0C4),
   primaryColorDark: Color(0xff6BD8C1),
-    accentColor: Color(0xff9b73ec),
+    accentColor: Color(0xff092531),
     fontFamily: 'Montserrat',
   textTheme: TextTheme(
     headline1: TextStyle(
