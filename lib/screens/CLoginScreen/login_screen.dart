@@ -1,140 +1,155 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../DRegisterScreen/register_screen.dart';
+
+final backgroundColor = Color(0xff00c389);
+
+void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: backgroundColor,
+    statusBarColor: backgroundColor,
+  ));
+}
 
 class LoginScreen extends StatefulWidget {
   static String id = 'LoginScreen ID';
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  double smallPadding = 8.0;
+  double defaultPadding = 16.0;
+  double bigPadding = 26.0;
+  double largePadding = 50;
+  double containerCornerRadius = 40;
+  double signUpButtonSize = 90;
+  bool setObscure = true;
+
   @override
   Widget build(BuildContext context) {
-    //Colors for gradient from Theme and height
     double deviceHeight = MediaQuery.of(context).size.height;
-    final light = Theme.of(context).primaryColorLight;
-    final dark = Theme.of(context).primaryColorDark;
     return Scaffold(
-      backgroundColor: light,
-      body: SafeArea(
-        child: Container(
+      backgroundColor: backgroundColor,
+      body: ListView(
+        children: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(
+                  left: largePadding,
+                  right: largePadding,
+                  bottom: 80,
+                  top: bigPadding + 80),
+              child: Text(
+                "Log In.",
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40),
+              )),
+
+          // The white Container for Email, Password fields & Create button
+          Container(
             height: deviceHeight,
-            decoration:
-                BoxDecoration(gradient: RadialGradient(colors: [light, dark])),
-            child: Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' UserName',
-                      prefixIcon: Icon(Icons.person_outline),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(140)),
+            ),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 20),
+                // Email
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: 100,
+                      left: bigPadding,
+                      right: bigPadding,
+                      bottom: bigPadding),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.email),
+                      labelText: 'Email',
                     ),
                   ),
+                ),
 
-                  TextField(
+                // Password
+                Padding(
+                  padding: EdgeInsets.only(left: bigPadding, right: bigPadding),
+                  child: TextFormField(
+                    obscureText: setObscure,
                     decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' Password',
-                      prefixIcon: Icon(Icons.lock),
+                      icon: Icon(Icons.vpn_key),
+                      labelText: 'Password',
+                      suffixIcon: FlatButton(
+                        onPressed: () {
+                          setState(() {
+                            setObscure = !setObscure;
+                          });
+                        },
+                        child: Icon(setObscure
+                            ? FontAwesomeIcons.eyeSlash
+                            : FontAwesomeIcons.eye),
+                      ),
                     ),
                   ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: InkWell(
-                      child: Text("Forgot Password?"),
-                      onTap: () {},
-                    ),
+                ),
+
+                // Sign Up Button
+                const SizedBox(height: 100),
+                RaisedButton(
+                  padding: EdgeInsets.only(
+                      left: signUpButtonSize,
+                      right: signUpButtonSize,
+                      top: defaultPadding,
+                      bottom: defaultPadding),
+                  color: Color(0xff55ce9e),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(90.0),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 30.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 60,
-                      child: FlatButton(
+                  onPressed: () {
+                    //TODO: Login Code
+                  },
+                  child: const Text(
+                    'Log In',
+                    style: TextStyle(
+                        fontSize: 20,
                         color: Colors.white,
-                        textColor: Colors.blue,
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(6.0)),
-                        splashColor: Colors.blueAccent,
-                        onPressed: () {},
-                        child: Text(
-                          "LOGIN",
-                        ),
-                      ),
-                    ),
+                        fontWeight: FontWeight.normal),
                   ),
-                  Text("Login With"),
-
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: 150,
-                          height: 60,
-                          child: FlatButton(
-                            color: Colors.blue[900],
-                            textColor: Colors.white,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(6.0)),
-                            splashColor: Colors.blueAccent,
-                            onPressed: () {},
-                            child: Text(
-                              "FACEBOOK",
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: 150,
-                          height: 60,
-                          child: FlatButton(
-                            color: Colors.red,
-                            textColor: Colors.white,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(6.0)),
-                            splashColor: Colors.blueAccent,
-                            onPressed: () {},
-                            child: Text(
-                              "GOOGLE",
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                ),
+                Container(
+                    margin: EdgeInsets.all(10),
+                    child: Text('Don\'t have an Account?')),
+                RaisedButton(
+                  padding: EdgeInsets.only(
+                      left: signUpButtonSize,
+                      right: signUpButtonSize,
+                      top: defaultPadding,
+                      bottom: defaultPadding),
+                  color: Color(0xff55ce9e),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(90.0),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: RichText(
-                      text: TextSpan(
-                        text: "Don't have an account? ",
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'Sign up',
-                              recognizer: new TapGestureRecognizer()
-                                ..onTap = () {},
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                    ),
-                  )
-
-                  //TODO: Add mail id
-
-                  //TODO: Add Password
-
-                  //TODO: Add Login Button
-
-                  //TODO: TRY Add LOG IN WITH GOOGLE
-                ],
-              ),
-            )),
+                  onPressed: () {
+                    Navigator.pushNamed(context, RegisterScreen.id);
+                  },
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
