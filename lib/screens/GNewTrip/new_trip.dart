@@ -13,7 +13,8 @@ class _NewTripState extends State<NewTrip> {
   GoogleMapController mapController;
 
   LatLng _center = LatLng(45.521563, -122.677433);
-  Marker userLocationMarker = Marker(position: LatLng(45.521563, -122.677433));
+  Marker userLocationMarker = Marker(
+      markerId: MarkerId('user'), position: LatLng(45.521563, -122.677433));
 
   Position _currentPosition;
 
@@ -36,7 +37,8 @@ class _NewTripState extends State<NewTrip> {
       setState(() {
         _currentPosition = position;
         _center = LatLng(_currentPosition.latitude, _currentPosition.longitude);
-        userLocationMarker = Marker(position: _center);
+        userLocationMarker =
+            Marker(markerId: MarkerId('user'), position: _center);
       });
 
       mapController.animateCamera(CameraUpdate.newCameraPosition(

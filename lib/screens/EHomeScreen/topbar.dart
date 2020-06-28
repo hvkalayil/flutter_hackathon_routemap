@@ -1,5 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 
 class TopBar extends StatefulWidget {
   const TopBar({
@@ -13,6 +19,21 @@ class TopBar extends StatefulWidget {
 }
 
 class _TopBarState extends State<TopBar> {
+  File _image;
+
+  @override
+  void initState() {
+    super.initState();
+    initJobs();
+  }
+
+  String appPath;
+
+  Future<void> initJobs() async {
+    Directory dir = await getApplicationDocumentsDirectory();
+    appPath = dir.path;
+  }
+
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
@@ -67,6 +88,7 @@ class _TopBarState extends State<TopBar> {
     );
   }
 
+  //To show Profile Details
   buildDialog(Color primaryColor, Color secondaryColor) {
     return Dialog(
       backgroundColor: primaryColor,
@@ -85,14 +107,12 @@ class _TopBarState extends State<TopBar> {
               child: getProfile(),
             ),
 
-            //UPLOAD PROFILE IMAGE
+            //UPLOAD PROFILE IMAGE Camera or Gallery
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RaisedButton(
-                  onPressed: () {
-                    //TODO: Add FilePicker code
-                  },
+                  onPressed: () => useImagePicker(false),
                   color: secondaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -110,9 +130,7 @@ class _TopBarState extends State<TopBar> {
                   ),
                 ),
                 RaisedButton(
-                  onPressed: () {
-                    //TODO: Add FilePicker code
-                  },
+                  onPressed: () => useImagePicker(true),
                   color: secondaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -151,8 +169,40 @@ class _TopBarState extends State<TopBar> {
     );
   }
 
+  //Gets Image from User for both Camera and gallery
+  //TODO: Not tested
+  useImagePicker(bool isCamera) async {
+    PickedFile pickedImage;
+    File image;
+    ImagePicker img = new ImagePicker();
+    if (isCamera)
+      pickedImage = await img.getImage(source: ImageSource.camera);
+    else
+      pickedImage = await img.getImage(source: ImageSource.gallery);
+
+    //Only File variables can be specified in testCompressAndGetFile
+    image = File(pickedImage.path);
+    var filename = path.basename(image.path);
+    File finalFile = await testCompressAndGetFile(image, '$appPath/$filename');
+    setState(() {
+      _image = finalFile;
+    });
+    print(_image.path);
+  }
+
+  //Compress the file for optimum perfomence
+  Future<File> testCompressAndGetFile(File file, String targetPath) async {
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 80,
+    );
+    return result;
+  }
+
+  //Function to return default Icon or uploaded image
   getProfile() {
-    //TODO: Check for profile imge
+    //TODO: Complete code
     return Icon(
       FontAwesomeIcons.user,
       color: Color(0xff00c389),

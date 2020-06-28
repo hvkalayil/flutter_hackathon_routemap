@@ -31,7 +31,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     //Colors for gradient from Theme and height
     double deviceHeight = MediaQuery.of(context).size.height;
-    double deviceWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: backgroundColor,

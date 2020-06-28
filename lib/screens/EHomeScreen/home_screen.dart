@@ -27,9 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     //Colors and height
-    double deviceHeight = MediaQuery.of(context).size.height;
     final accent = Theme.of(context).accentColor;
-    final secondaryColor = Theme.of(context).secondaryHeaderColor;
+
     return Scaffold(
       backgroundColor: backgroundColor,
       drawer: BuildDrawer(),
@@ -45,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
               shrinkWrap: true,
               children: [
                 //Todays Card
+                //TODO: Automate with current date
                 Container(
                   margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   padding: EdgeInsets.all(10),
@@ -54,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Column(
                     children: [
+                      //Heading Date
                       Container(
                         margin: EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
@@ -71,57 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
+
+                      //Trips
                       Wrap(
                         alignment: WrapAlignment.center,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ]),
-                            child: Text(
-                              'Trip #1',
-                              style: Theme.of(context).textTheme.headline3,
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ]),
-                            child: Text(
-                              'Trip #1',
-                              style: Theme.of(context).textTheme.headline3,
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ]),
-                            child: Text(
-                              'Trip #1',
-                              style: Theme.of(context).textTheme.headline3,
-                            ),
-                          ),
                           Container(
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(10),
@@ -140,6 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
+
+                      //Button to start new trip
                       RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
@@ -158,7 +115,48 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(width: 10),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushNamed(context, NewTrip.id);
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    scrollable: true,
+                                    title: Text(
+                                      'Enter Trip Name',
+                                      textAlign: TextAlign.center,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
+                                    ),
+                                    content: Column(
+                                      children: [
+                                        Divider(color: backgroundColor),
+                                        TextFormField(
+                                          decoration: InputDecoration(
+                                            icon: Icon(FontAwesomeIcons.italic),
+                                            labelText: 'Trip Name',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [
+                                      FlatButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text('Cancel'),
+                                      ),
+                                      FlatButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, NewTrip.id);
+                                        },
+                                        child: Text('Done'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+//                                Navigator.pushNamed(context, NewTrip.id);
                               },
                               child: Text(
                                 'Start New Trip',
@@ -173,6 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
 
                 //Previous Days Card
+                //TODO: Automate History with cloud data
                 Container(
                   margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   padding: EdgeInsets.all(10),
@@ -182,6 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: Column(
                     children: [
+                      //Heading date
                       Container(
                         margin: EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
@@ -199,25 +199,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
+
+                      //Trips
                       Wrap(
                         alignment: WrapAlignment.center,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black12,
-                                      blurRadius: 5,
-                                      spreadRadius: 2)
-                                ]),
-                            child: Text(
-                              'Trip #1',
-                              style: Theme.of(context).textTheme.headline3,
-                            ),
-                          ),
                           Container(
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(10),
