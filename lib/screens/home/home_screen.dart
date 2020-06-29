@@ -1,4 +1,5 @@
 import 'package:RouteMap/screens/new_trip.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,7 @@ import 'drawer_menu.dart';
 import 'topbar.dart';
 
 final backgroundColor = Color(0xff00c389);
+FirebaseUser mUser;
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -18,6 +20,8 @@ void main() {
 
 class HomeScreen extends StatefulWidget {
   static String id = 'HomeSCreen ID';
+  final FirebaseUser user;
+  const HomeScreen({Key key, this.user}) :super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -37,14 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             //Top Bar
             TopBar(
-              userName: 'hoseakalayil@gmail.com',
+              userName: widget.user.email,
             ),
 
             ListView(
               shrinkWrap: true,
               children: [
                 //Todays Card
-                //TODO: Automate with current date
                 Container(
                   margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   padding: EdgeInsets.all(10),

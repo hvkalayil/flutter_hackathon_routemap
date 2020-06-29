@@ -60,7 +60,7 @@ class _TopBarState extends State<TopBar> {
 
           //HEADING
           Text(
-            'ROUTE MAP',
+            'Route Map',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headline1,
           ),
@@ -93,8 +93,7 @@ class _TopBarState extends State<TopBar> {
     return Dialog(
       backgroundColor: primaryColor,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), bottomRight: Radius.circular(20))),
+          borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Container(
         margin: EdgeInsets.all(20),
         height: 250,
@@ -123,7 +122,7 @@ class _TopBarState extends State<TopBar> {
                         color: primaryColor,
                       ),
                       Text(
-                        'Gallery',
+                        '  Gallery',
                         style: Theme.of(context).textTheme.headline3,
                       )
                     ],
@@ -140,7 +139,7 @@ class _TopBarState extends State<TopBar> {
                         FontAwesomeIcons.camera,
                         color: primaryColor,
                       ),
-                      Text('Camera',
+                      Text('  Camera',
                           style: Theme.of(context).textTheme.headline3)
                     ],
                   ),
