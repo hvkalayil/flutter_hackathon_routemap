@@ -39,6 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.of(context).pop();
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(user: user)));
+
     }
   }
 
@@ -182,11 +184,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formState.validate()) {
       _formState.save();
       try {
-        await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
+        FirebaseUser user = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password)).user;
         Navigator.of(context).pop();
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(user: user)));
       } catch (e) {
         print(e.message);
       }
