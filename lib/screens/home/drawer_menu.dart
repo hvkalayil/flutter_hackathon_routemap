@@ -1,5 +1,5 @@
-import 'package:RouteMap/screens/CLoginScreen/login_screen.dart';
-import 'package:RouteMap/screens/FSettingsScreen/settings_screen.dart';
+import 'package:RouteMap/screens/login/login_screen.dart';
+import 'package:RouteMap/screens/settings_screen.dart';
 import 'package:RouteMap/utility/shared_prefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

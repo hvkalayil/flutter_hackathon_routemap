@@ -1,13 +1,13 @@
-import 'package:RouteMap/screens/CLoginScreen/login_screen.dart';
-import 'package:RouteMap/screens/DRegisterScreen/register_screen.dart';
-import 'package:RouteMap/screens/EHomeScreen/home_screen.dart';
-import 'package:RouteMap/screens/FSettingsScreen/settings_screen.dart';
-import 'package:RouteMap/screens/GNewTrip/new_trip.dart';
+import 'package:RouteMap/screens/home/home_screen.dart';
+import 'package:RouteMap/screens/login//register_screen.dart';
+import 'package:RouteMap/screens/login/login_screen.dart';
+import 'package:RouteMap/screens/new_trip.dart';
+import 'package:RouteMap/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'Theme/theme.dart';
-import 'screens/ASplashScreen/splash_screen.dart';
-import 'screens/BLoginRegisterScreen/login_register_screen.dart';
+import 'screens/login/login_screen.dart';
+import 'screens/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,11 +18,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Route Map',
       theme: lightTheme,
-      home: RegisterScreen(),
-      initialRoute: RegisterScreen.id,
+      home: LoginScreen(),
+      initialRoute: LoginScreen.id,
       routes: {
         SplashScreen.id: (context) => SplashScreen(),
-        LoginRegisterScreen.id: (context) => LoginRegisterScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         RegisterScreen.id: (context) => RegisterScreen(),
         HomeScreen.id: (context) => HomeScreen(),
