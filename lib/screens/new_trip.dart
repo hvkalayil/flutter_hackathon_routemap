@@ -15,8 +15,8 @@ class NewTrip extends StatefulWidget {
   static String id = 'NewTrip Id';
   const NewTrip({
     Key key,
-    @required this.name,
-    @required this.today,
+    this.name,
+    this.today,
   }) : super(key: key);
   final String name;
   final DateTime today;

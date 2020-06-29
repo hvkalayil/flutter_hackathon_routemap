@@ -33,8 +33,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //Colors for gradient from Theme and height
     double deviceHeight = MediaQuery.of(context).size.height;
+    double deviceWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -83,6 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 20),
+
                   // Email
                   Padding(
                     padding: EdgeInsets.only(
@@ -137,8 +138,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 120),
                   RaisedButton(
                     padding: EdgeInsets.only(
-                        left: _signUpButtonSize,
-                        right: _signUpButtonSize,
+                        left: deviceWidth / 3,
+                        right: deviceWidth / 3,
                         top: _defaultPadding,
                         bottom: _defaultPadding),
                     color: Color(0xff55ce9e),

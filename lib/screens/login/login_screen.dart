@@ -26,8 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _defaultPadding = 16.0,
       _bigPadding = 26.0,
       _largePadding = 50,
-      _containerCornerRadius = 100,
-      _signUpButtonSize = 90;
+      _containerCornerRadius = 100;
   bool setObscure = true;
   String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -49,6 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
     checkLogin();
 
     double deviceHeight = MediaQuery.of(context).size.height;
+    double deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: backgroundColor,
         body: Form(
@@ -135,12 +135,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
 
-                    // Sign Up Button
+                    // Log In Button
                     const SizedBox(height: 80),
                     RaisedButton(
                       padding: EdgeInsets.only(
-                          left: _signUpButtonSize,
-                          right: _signUpButtonSize,
+                          left: deviceWidth / 3,
+                          right: deviceWidth / 3,
                           top: _defaultPadding,
                           bottom: _defaultPadding),
                       color: Color(0xff55ce9e),
