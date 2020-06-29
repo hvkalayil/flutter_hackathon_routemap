@@ -167,9 +167,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if(_formKey.currentState.validate()) {
       _formKey.currentState.save();
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
+        FirebaseUser user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password)).user;
         Navigator.of(context).pop();
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(user: user)));
       } catch(e) {
         print(e.message);
       }

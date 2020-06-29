@@ -42,14 +42,14 @@ class BuildDrawer extends StatelessWidget {
                         if (drawerItems[index] == 'About') {
                           showAboutDialog(
                               context: context,
-                              applicationName: 'RouteMap',
+                              applicationName: 'Route Map',
                               applicationVersion: 'Version 1.0',
                               children: [
                                 Text('This is a location tracking'
                                     'application. It can be used to track'
                                     'your locations and interactions.'
-                                    ' This data can be used to isolate '
-                                    'your contacts for covid tests.')
+                                    'This data can be used to isolate '
+                                    'your contacts for COVID tests.')
                               ]);
                         }
 
