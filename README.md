@@ -13,7 +13,7 @@ We can scale the app as a travel app after the pandemic, helping users to record
 
 
 # Project Setup Instructions:
-1. google-services.json
+1. google-services.json.
    You need to obtain and insert your google-services.json file into the  /android/app  directory, otherwise the app won't work properly
    To obtain this google-services.json file:
       * Go to Firebase Console and create a new Project
