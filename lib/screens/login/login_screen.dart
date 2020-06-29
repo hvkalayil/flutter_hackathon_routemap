@@ -37,7 +37,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (user != null) {
       Navigator.of(context).pop();
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(user: user)));
+
     }
   }
 
@@ -88,6 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           right: _bigPadding,
                           bottom: _bigPadding),
                       child: TextFormField(
+                        // ignore: missing_return
                         validator: (input) {
                           if (input.isEmpty) {
                             return "Email cannot be empty";
@@ -106,6 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: EdgeInsets.only(
                           left: _bigPadding, right: _bigPadding),
                       child: TextFormField(
+                        // ignore: missing_return
                         validator: (input) {
                           if (input.length < 6) {
                             return "Password must be atleast 6 characters long";

@@ -8,10 +8,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class BuildDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<String> drawerItems = ['About', 'Settings', 'LogOut'];
+    List<String> drawerItems = ['About', 'LogOut'];
     List<IconData> drawerIcons = [
       FontAwesomeIcons.info,
-      FontAwesomeIcons.cog,
       FontAwesomeIcons.signOutAlt
     ];
     double deviceHeight = MediaQuery.of(context).size.height;
